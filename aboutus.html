@@ -6,14 +6,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
-
-      <!-- Additional CSS must be placed after Bootstrap CSS -->
-        <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
-        <link rel="stylesheet" href="css/styles.css" />
+    <!-- build:css css/main.css -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- endbuild -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
 
     <title>NuCamp: A Better Way To Camp</title>
 </head>
@@ -28,16 +27,16 @@
             </button>
             <div class="collapse navbar-collapse bg-danger" id="navbar">
                 <ul class="navbar-nav">
+
                     <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa fa-home fa-lg"></i> Home</a></li>
                     <li class="nav-item active"><a class="nav-link" href="#"><i class="fa fa-info fa-lg"></i> About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="schedule.html"><i class="fa fa-calander fa-lg"></i> Schedule</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class"fa fa-address-card fa-lg"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa fa-address-card fa-lg"></i> Contact</a></li>
                 </ul>
                 <ul class="collapse navbar-collapse bg-danger nav navbar-nav navbar-right">    
                    
                     <li class="nav-btn">
                        
-                        <button type="button" class="nav-btn navbar-btn btn-warning btn-outline-primary btn-lg" href="schedule.html">Schedule Now</button>
+                        <a class="nav-btn navbar-btn btn-warning btn-outline-primary btn-lg" id="scheduleButton3">Schedule Now</a>
                         
                     </li>
                     
@@ -45,6 +44,93 @@
             </div>
         </div>
     </nav>
+
+            <!--Schedule Modal Start-->
+            <div id="scheduleModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Schedule Now</h3>
+                            <button class="close" type="button" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <form>
+                                    <div class="row form-group">
+                                        <label class="col col-form-label font-weight-bold" for="dropOffOrPickUp">Drop it off, schedule a pick up for $60(within 15 miles of shop) or schedule a donation.</label>
+                                        <div class="col">
+                                            <select name="numCampers" id="numCampers">
+                                                <option>Select ...</option>
+                                                <option value="dropOff">Drop Off</option>
+                                                <option value="pickUp">Schedule a Pick Up (Additional Fee)</option>
+                                                <option value="donationDropOff">Donation Drop Off</option>
+                                                <option value="donationPickUp">Donation Pick Up (No Fee)</option>
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label for="date" class="col-sm-6 col-form-label font-weight-bold">Date</label>
+                                        <div class="col">
+                                            <input type="date" class="form-control" name="date" id="date" placeholder="Date" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="form-group col-12" >
+                                            <label for="name" class="sr-only">Name</label>
+                                            <input type="text" class="form-control form-control-sm" id="name" placeholder="Enter name" required />
+                                            
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label for="tel" class="sr-only">Telephone Number</label>
+                                            <input type="tel" class="form-control form-control-sm" id="tel" placeholder="(555) 555-5555" required/>
+                                            
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label for="loginEmail" class="sr-only">Email address</label>
+                                            <input type="email" class="form-control form-control-sm" id="email" placeholder="Enter email" required/>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label for="address" class="sr-only">Address</label>
+                                            <input type="text" class="form-control form-control-sm" id="address" placeholder="Enter Address" required/>
+                                        </div>
+                                        <div class="form-group col-5">
+                                            <label for="state" class="sr-only">State</label>
+                                            <input type="text" class="form-control form-control-sm" id="loginEmail" placeholder="State" required/>
+                                        </div>
+                                        <div class="form-group col-7">
+                                            <label for="zipcode" class="sr-only">Zipcode</label>
+                                            <input type="text" class="form-control form-control-sm" id="zipcode" placeholder="Zipcode" required/>
+                                        </div>
+                                        <div class="form-group col-7">
+                                            <label for="machineType" class="sr-only">Type of Machine</label>
+                                            <input type="text" class="form-control form-control-sm" id="machineType" placeholder="Please enter the Machine Type and Model Number if Possible" />
+                                        </div>
+                                        <div class="form-group col-7">
+                                            <label for="referredBy" class="sr-only">Who should we Thank for referring you?</label>
+                                            <input type="text" class="form-control form-control-sm" id="referredBy" placeholder="Who should we thank for referring you?" />
+                                        </div>
+                                        <label for="" class="col-sm-6 col-form-label font-weight-bold">Description of machine issues you would like addressed</label>
+                                        <div class="col" >
+                                            
+                                                <textarea name="comments" id="clientComments" placeholder="Enter Description of Machine Issues Here..."></textarea> 
+                                         
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col">
+                                            <button data-dismiss="modal" class="btn btn-secondary">Cancel</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!--End of Schedule Modal-->
     
     <header class="jumbotron jumbotron-fluid">
         <div class="container">
@@ -171,7 +257,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="schedule.html">Schedule</a></li>
-                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-sm-5 text-center">
@@ -189,10 +275,12 @@
         </div>
     </footer>
 
-     <!-- jQuery must come first, then Popper.js, then the Bootstrap JavaScript plugins.-->
+     <!-- build:js js/main.js -->
      <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
      <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
      <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+     <script src="js/scripts.js"></script>
+     <!-- endbuild -->
 
 </body>
 

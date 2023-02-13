@@ -1,0 +1,26 @@
+$color-primary: red;
+$color-secondary: green;
+$color-third: white;
+$color-black-transparent: rgba(0, 0, 0, .2);
+
+$body-font: "Open Sans", sans-serif;
+
+
+body {
+    background-color: $color-third;
+}
+.carousel-caption {
+    background-color: $color-black-transparent;
+    color: white;
+    border: 1px solid $color-secondary;
+}
+.carousel {
+    border: 2px solid $color-primary;
+    
+}
+.navbar {
+    border: 2px solid $color-secondary;
+}
+h3 {
+    color: $color-primary;
+}
